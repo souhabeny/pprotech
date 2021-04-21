@@ -1,0 +1,39 @@
+<div class="prodContainer" (mouseenter)="recup()" (mouseleave)="hide()">
+  <div   class="prodList">
+    <div class="shopping-cart">
+      <!-- Title -->
+      <h4 class="title">
+        Panier
+      </h4>
+      <!--Item -->
+      <div class="item"  *ngFor="let t of tabRes">
+        <div class="imageContainer">
+          <img class="image" src="{{t.productToAdd.image}}" alt="" />
+        </div>
+
+        <span class="description">{{t.productToAdd.nom}}</span>
+
+        <div class="quantity">
+          <button (click)="incr(t.productToAdd._id.toString())" class="pmBut">+</button><br>
+          <div class="qte">{{t.qte}}</div><br>
+          <button (click)="decr(t.productToAdd._id.toString())" class="pmBut">-</button>
+        </div>
+
+        <div class="total-price">{{t.productToAdd.prix}} DT</div>
+
+        <div class="buttons">
+          <button (click)="suppProduct(t.productToAdd._id.toString())" class="delBut">X</button>
+        </div>
+      </div>
+      <!--end item-->
+
+    </div>
+
+  </div>
+  <div class="validateContainer" *ngIf="tabRes.length>0">
+    <span style="float: left;margin-left: 20px">Prix total: </span>
+    <span style="float: right;margin-right: 20px">{{this.totalPrice}}DT</span>
+    <br><br>
+    <button class="validerBt" routerLink="/panier" >Voir panier</button>
+  </div>
+</div>

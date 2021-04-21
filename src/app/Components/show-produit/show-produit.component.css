@@ -1,0 +1,21 @@
+.showCard{
+    margin-top: 200px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-bottom: 300px;
+    height: 50%;
+    font-family: 'IBM Plex Mono', monospace;
+}
+.divshow{
+    display: flex;
+    justify-content: space-around;
+}
+.divparag{
+    margin-left: 20px;
+}
+h1{
+    color:#CC0000;
+}
+img{
+   width: 300px;
+   height: 300px;
+}

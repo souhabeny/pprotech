@@ -1,0 +1,47 @@
+<nav id="nav" style="diplay:flex;border-radius:0px;position: fixed;width:100%;z-index:666 " class="navbar navbar-expand-md navbar-light bg-light sticky-top ">
+  <div class="container-fluid">
+   
+      <img src="../../../assets/Images/Logo2.png" routerLink="/" height="70px" width="200px" style="margin-left: -30px;cursor:pointer"/>
+  
+   
+    <button class="navbar-toggler" type="button" style="margin-left: -20px" data-toggle="collapse" data-target="#navbarResponsive">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div  style="width:100%;height:100%"  class="collapse navbar-collapse" id="navbarResponsive">
+      <ul style="float:right" class="navbar-nav ml-auto">
+
+        
+
+        <li class="nav-item">
+          <a [className]="acHome ? 'nav-link active' : 'nav-link'"  routerLink="/">Accueil</a>
+        </li>
+        <li class="nav-item" *ngIf="!isAdmin">
+          <a [className]="acCon ? 'nav-link active' : 'nav-link'"  routerLink="/contact">Contactez nous</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a [className]="acCon ? 'nav-link active' : 'nav-link'" routerLink="/admin/addproduct">Créer produit</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a [className]="acCon ? 'nav-link active' : 'nav-link'" routerLink="/adminCommande">Consulter commandes</a>
+        </li>
+        <li class="nav-item" *ngIf="isLogged && !isAdmin">
+          <a [className]="acCon ? 'nav-link active' : 'nav-link'" routerLink="/commandeclient">Consulter mes commandes</a>
+        </li>
+        
+        <li class="nav-item" *ngIf="!isLogged" >
+          <a [className]="acLogReg ? 'nav-link active' : 'nav-link'" routerLink="/Login" title="Inscrire ou login"><span class="glyphicon glyphicon-user"></span></a>
+        </li>
+        <li class="nav-item" *ngIf="isLogged">
+          <span (click)="logOut()" style="cursor: pointer"><mat-icon style="color: rgb(212,24,24);margin-top:12px">logout</mat-icon></span>
+        </li>
+      </ul>
+
+    </div>
+
+    
+    <mat-icon *ngIf="!isAdmin"  routerLink="/panier" (mouseenter)="hideShowPan(1)" height="30px" style="z-index:6666666666;cursor:pointer;float: right;color: rgb(212,24,24)" title="voir panier">shopping_cart</mat-icon>
+  </div>
+
+</nav>
+<app-mini-panier *ngIf="!hideMinPan" class="panComp" [@smoothCollapse]="isOnP?'initial':'final'" (mouseleave)="hideShowPan(2)" ></app-mini-panier>
+

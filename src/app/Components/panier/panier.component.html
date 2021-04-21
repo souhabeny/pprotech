@@ -1,0 +1,88 @@
+<app-nav [alwaysHideMinPan]=true></app-nav>
+
+<div *ngIf="emptyTab" style="text-align:center;width: 100%;margin-top: 120px;margin-bottom: 40px">
+  <h4 style="font-weight: bolder">Oups! Votre panier est vide</h4>
+  <img style="margin-right:-15%;height: 50%;width: 50%" src="../../../assets/Images/emptyCart.png"/>
+  <div style="float:right;margin-right:5%;margin-top: 10%"><a class="btn btn-success btn-lg" routerLink="/" style="color: white">Accueil </a>
+
+  </div>
+</div>
+
+
+<div *ngIf="!emptyTab">
+  <div [ngStyle]="{'filter':showHideImg ? 'blur(4px)' : 'none' }">
+    <div [ngStyle]="{'filter':showLogIns ? 'blur(4px)' : 'none' }">
+      <div style="margin-top:110px;font-size: 20px" class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Panier </div>
+
+      <table class="table table-striped">
+
+        <tbody>
+
+        <tr *ngFor="let t of tabRes">
+          <td style="padding-top: 40px">
+            <button class="btn btn-danger" (click)="suppProduct(t.productToAdd._id)">x</button>
+          </td>
+          <td>
+            <img class="image" alt="Product image" title="See image" (click)="showImg(1,'http://localhost:4000/files/' + t.productToAdd.image)" style="cursor: pointer;border-radius: 15px; margin-right: 50px;height:100px;width:100px" [src]="'http://localhost:4000/files/' + t.productToAdd.image"/>
+          </td>
+          <td style="padding-top: 40px;">
+            <h4>{{t.productToAdd.nom}}</h4>
+          </td>
+          <td>
+            <div class="description" style="margin-right:5px;margin-top: 20px ">
+              
+              <span>{{t.productToAdd.desc}}</span>
+            </div>
+          </td>
+          <td  [ngStyle]="{'padding-top':isMobile ? '23px' : '40px'}">
+            <button class="btn btn-success" (click)="incr(t.productToAdd._id)" type="button" name="button">+</button>
+            <span class="qte" style="margin-right: 12px">{{t.qte}}</span>
+            <button class="btn btn-warning" (click)="decr(t.productToAdd._id)" type="button" style="width:35px">-</button>
+          </td>
+          <td>
+            <div class="total-price">{{t.productToAdd.prix}} DT</div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <hr style="border:1px solid lightgrey">
+      <div style="margin-top: 20px;font-size: 20px" class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Commande </div>
+      <div class="p-4">
+        <p class="font-italic mb-4">Les frais d'expédition et supplémentaires sont calculés en fonction des valeurs que vous avez saisies.</p>
+        <ul class="list-unstyled mb-4">
+          <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total commande </strong><strong>{{totalPrice}}DT</strong></li>
+          <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">frais de livraison</strong><strong>7DT</strong></li>
+          <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Taxe</strong><strong>0.00DT</strong></li>
+          <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted"><h3>Total</h3></strong>
+            <h3 class="font-weight-bold">{{totalPrice+10}}DT</h3>
+          </li>
+        </ul>
+        <div style="text-align: right">
+          <a (click)="addCommande()" [routerLink]="['/checkout', {'price': totalPrice + 10}]" class="btn btn-success btn-lg" style="margin-right: 20px;color: white">Passer commande</a>
+          <a routerLink="/" class="btn btn-lg"><span class="cntSh">Poursuivre votre achat</span></a>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div (click)="showImg(2,'')"  class="bg-img" [ngStyle]="{'display':showHideImg ? 'inherit' : 'none' }">
+    <img src="{{imgSrc}}"/>
+  </div>
+
+  <div *ngIf="showLogIns" class="formStyleContainer">
+    <div class="formStyle">
+      <button style="margin-left: 5px;float: left;margin-top: 20px" class="btn btn-dribbble" (click)="closeLogIns()">Cancel</button>
+
+      <app-login style="margin-top:7%;float: left;margin-left: 10px"></app-login>
+
+      <app-register style="margin-top:-20px;float: right;margin-right: 10%"></app-register>
+
+    </div>
+  </div>
+
+
+</div>
+<div [ngStyle]="{'filter':showHideImg ? 'blur(4px)' : 'none' }">
+  <app-footer></app-footer>
+</div>

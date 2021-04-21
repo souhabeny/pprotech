@@ -1,0 +1,71 @@
+<app-nav></app-nav>
+<br><br><br><br><br><br><br>
+
+<div class="header">
+  <div class="header-bottom">
+    <div class="banner-contents contact">
+      <div class="container">
+        <div class="banner-details">
+          <div class="banner-info text-center">
+            <h3>Nous Contacter</h3>
+            <p>Vous voulez demander quelque chose? N'hésitez pas à nous contacter. Vos Feedbacks sont très appréciés.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="holder ">
+  <div class="workforce-section">
+    <div class="container">
+     
+      <div class="workforce-wrap" data-aos="fade-up">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Nom *:">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Prenom *:">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="number" class="form-control" placeholder="Téléphone *:">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email *:" [(ngModel)]="contact.froms">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Sujet *:" cols="3" [(ngModel)]="contact.subject">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <textarea class="form-control" placeholder="Message *:" cols="3" [(ngModel)]="contact.message"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="sub-btn text-center">
+          <button class="btn" mat-raised-button (click)="send()">Soumettre</button>
+        </div>
+      </div>
+    
+      <div class="map">
+        <iframe src="https://maps.google.com/maps?q=kram%20&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<br><br><br><br><br><br><br>
+<app-footer></app-footer>

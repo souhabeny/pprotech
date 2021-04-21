@@ -1,0 +1,81 @@
+<div   class="container-fluid padding" >
+  <div class="col-sm-3 mt-5" >
+    <div class="list-group scrollbar">
+      <h1  class="list-group-item waves-light danger-color-dark"  style="color:#CC0000;font-weight: bold;font-family: 'IBM Plex Mono', monospace;">
+        <i class="fas fa-bars ml-1 mr-2"></i> Catégories
+      </h1>
+      <a  class="list-group-item list-group-item-action waves-light"  (click)="categsearchall()" >
+       Tous catégories
+      </a>
+      <a  class="list-group-item list-group-item-action waves-light"  style="cursor: pointer;" *ngFor="let categorie of categories"  >
+       <div style="display: flex;justify-content: space-between;" (click)="afficherSousCateg(categorie._id)">
+        
+          <div>
+            {{categorie.nom}}
+          </div> 
+          <div>
+            <mat-icon style="color: red;"*ngIf="isAdmin" (click)="deleteCategorie(categorie)" >delete_forever</mat-icon>
+          </div>
+          
+        
+        
+          <mat-icon >expand_more</mat-icon>
+         
+        
+        
+       </div> 
+      
+        <ul  *ngFor="let souscategorie of souscategories" >
+          <li *ngIf="categorie._id==souscategorie.categorie" (click)="categsearchmethod(souscategorie)">
+            <div style="display: flex;justify-content: space-between;" class="list-group-item list-group-item-action waves-light">
+              <a  >{{souscategorie.nom}}</a>
+            
+              <mat-icon  style="color: red;"*ngIf="isAdmin" (click)="deletesousCategorie(souscategorie)" >delete_forever</mat-icon>
+            
+            </div>
+              
+          </li>
+        </ul>
+     
+         
+      </a>
+      
+    
+    </div>
+  </div>
+  <div  class="col-sm-8" style="display: flex;justify-content:end;flex-wrap: wrap;" >
+    <div class="col-sm-4" style="margin-bottom: 20px;" *ngFor="let product of products | CategorieFilter:categsearch">
+      <mat-card class="example-card ">
+        <mat-card-header>
+          <mat-card-title>{{product.nom}}</mat-card-title>
+          <mat-card-subtitle style="font-size: 15px;font-weight: bold;">PRIX {{product.prix}} DT</mat-card-subtitle>
+        </mat-card-header>
+        <img *ngIf="product.image != null; else noimage"   class="card-img-top" [src]="'http://localhost:4000/files/' + product.image">
+        <ng-template #noimage>
+          <img  class="card-img-top" src="../../../assets/Images/Logo2.png">
+        </ng-template>
+        <mat-card-content style="display: flex; flex-direction: column;">
+          <div>
+            {{product.desc}}
+          </div>
+          <div style="display: flex;justify-content: space-around;">
+            <button mat-raised-button color="warn"  *ngIf="isAdmin"  (click)="deleteprod(product)"><mat-icon>delete</mat-icon></button>
+            <button mat-button  class="show" routerLink="showproduit/{{product._id}}"><mat-icon>remove_red_eye</mat-icon></button>
+            <button *ngIf="!isAdmin" style="float:right;margin-right: 10px;" mat-button class="btn btn-outline-success" (click)="addToCarta(product)"><mat-icon style="margin-right: 10px;">add_shopping_cart</mat-icon>Ajouter panier</button>
+          </div>
+         
+  
+        </mat-card-content>
+     
+      </mat-card>
+    </div>
+ 
+  </div>
+</div>
+<br><br>
+
+
+
+
+
+

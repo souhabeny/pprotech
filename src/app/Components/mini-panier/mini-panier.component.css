@@ -1,0 +1,172 @@
+.prodContainer
+{
+  width: 320px;
+  color:#CC0000 ;
+  min-height: 100px;
+  float:right;
+  max-height: 400px;
+  background-color:white ;
+  box-shadow: 1px 2px 3px 5px rgba(0,0,0,0.10);
+}
+.prodList{
+ 
+  min-height: 50px;
+  max-height: 300px;
+  width: 100%;
+  display:list-item;
+  list-style-type: none;
+  padding:5px;
+  font-weight: bolder;
+  background-color: white;
+}
+
+
+.shopping-cart {
+  width: 100%;
+  height: auto;
+  background: #FFFFFF;
+
+  box-shadow: 1px 2px 3px 2px rgba(0,0,0,0.10);
+  border-radius: 6px;
+
+}.title {
+   height: 20px;
+   border-bottom: 1px solid #E1E8EE;
+   color: #5E6977;
+   font-size: 15px;
+   font-weight: 400;
+ }
+
+.item {
+  height: 90px;
+  width:90%;
+  margin: 10px;
+  padding-bottom: 10px;
+  display: flex;
+}
+
+.item:nth-child(3) {
+  border-top:  1px solid #E1E8EE;
+  border-bottom:  1px solid #E1E8EE;
+}
+
+.buttons {
+  position: relative;
+  padding-top: 20px;
+}
+.btn btn-danger{
+  padding-right: 8px;
+}
+
+.imageContainer{
+
+  max-width: 50px;
+  min-width: 50px;
+
+}
+.image {
+  margin-right: 20px;
+  height:70px;
+}
+
+
+.description {
+
+  max-width: 90px;
+  min-width: 90px;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #43484D;
+  font-weight: 400;
+}
+.quantity {
+  padding-top: 6px;
+  margin-right: -10px;
+}
+
+.pmBut
+{
+  border: none;
+  width:23px;
+  height:20px;
+  background-color: #555555;
+  color: white;
+  border-radius:20px;
+  margin:2px
+}
+
+.pmBut:hover
+{
+
+  border: 1px solid #555555;
+  background-color: white;
+  color: #555555;
+
+}
+
+.validateContainer{
+  color:#5E6977;
+  text-align: center;
+  background-color:white ;
+  box-shadow: 1px 2px 3px 5px rgba(0,0,0,0.10);
+  border-radius:20px;
+  padding-top: 5px;
+  margin-bottom: 5px;
+}
+.validerBt{
+  margin-bottom: 10px;
+  border: 1px solid;
+  width:100px;
+  height:20px;
+  background-color: #1da1f2;
+  border: none;
+  color: white;
+  border-radius:20px
+}
+.validerBt:hover
+{
+  border:0.5px solid #1da1f2;
+  background-color: white;
+  color: #1da1f2;
+
+}
+.delBut
+{
+  border: 1px solid;
+  width:23px;
+  margin-top: 7px;
+  margin-left: 8px;
+  height:20px;
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius:20px
+}
+.delBut:hover
+{
+
+  border:1px solid red;
+  background-color: white;
+  color: red;
+
+}
+.total-price {
+  max-width: 85px;
+  min-width: 85px;
+  margin-left: 15px;
+  padding-top: 25px;
+  text-align: center;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+}
+.qte
+{
+
+  width: 100%;
+  margin-top: 2px;
+  text-align: center;
+  height: 3px;
+  color:black;
+  font-size: 15px;
+}

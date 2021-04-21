@@ -1,0 +1,57 @@
+<app-nav></app-nav>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date commande</th>
+        <th scope="col">Client</th>
+        <th scope="col">Nom Produits</th>
+        <th scope="col">Images</th>
+        <th scope="col">Description</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Confirmation</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let commande of mycommandes.reverse()" >
+            <th scope="row"  *ngIf="commande.produits.length!=0">{{commande.commande.date | date}}</th>
+            <td>
+                <button  type="submit" mat-flat-button color="primary" (click)="showclient(commande.commande.client)">Détail client</button>
+            </td>
+            <td>
+                    <ul *ngFor="let prod of commande.produits"  >
+                        <li> {{prod.nom}}</li>
+                    
+                    </ul>
+            </td>
+          
+            <td>
+                    <ul *ngFor="let prod of commande.produits">
+                        <li> <img  class="card-img-top" [src]="'http://localhost:4000/files/' + prod.image"></li>
+                    </ul>
+            </td>
+            <td>
+                    <ul *ngFor="let prod of commande.produits">
+                        <li> {{prod.desc}}</li>
+                    </ul>
+            </td>
+            <td>
+                    <ul *ngFor="let prod of commande.produits">
+                    <li> {{prod.prix}} DT</li>
+                    </ul>
+            </td>
+            <td>
+                <ul *ngFor="let prod of commande.produits; let i=index">
+                     <li>{{commande.commande.produits[commande.commande.produits.length-i-1].qte}}</li>
+                </ul>
+            </td>
+            <td>
+                <button  type="submit" mat-flat-button color="basic" (click)="updateCommand(commande.commande)">
+                    <i  class="far fa-check-circle fa-2x ml-3 " style="color: green;cursor: pointer;" ></i>
+                 </button>   
+               
+            </td>
+       </tr>
+    </tbody>
+</table>
+<app-footer></app-footer>

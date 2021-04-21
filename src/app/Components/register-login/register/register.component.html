@@ -1,0 +1,99 @@
+<div class="medium-list" style="margin-top: 0px;width:40%;margin-left: 30%;">
+  <div class="list-viewer-wrapper " >
+    <div style="font-weight: bolder;font-size:30px;margin-bottom: 10px;" class="list-header-title">Inscrire</div>
+    <hr/>  
+    <form [formGroup]="SignForm"  (ngSubmit)="SignForm.valid" novalidate>
+    <div class="form-container">
+        <div >
+          <div style="display: flex;flex-direction: row;justify-content: space-around;margin-bottom: 20px;">
+            <div>
+              <mat-form-field >
+                <mat-label>Prenom</mat-label>
+                <input matInput
+                       placeholder="Entrez votre nom"
+                       required
+                       formControlName="prenom"
+                       [(ngModel)]="user.prenom"
+                       #name
+                     >
+                     <mat-error *ngIf="SignForm.get('prenom').hasError('required')">Prénom obligatoire</mat-error>
+                    </mat-form-field>
+              </div>
+            <div>
+              <mat-form-field >
+                <mat-label>Nom</mat-label>
+                <input matInput
+                       #lastname
+                       required
+                       formControlName="nom"
+                       placeholder="Entrez votre Prenom"
+                       [(ngModel)]="user.nom"
+                >
+                <mat-error *ngIf="SignForm.get('nom').hasError('required')">Nom obligatoire</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div style="margin-bottom: 10px;display: flex;flex-direction: row;justify-content: space-around">
+            <div >
+              <mat-form-field >
+                <mat-label>Email</mat-label>
+                <input matInput
+                       id="email"
+                       #email
+                       required
+                       placeholder="exemple@exemple.exp"
+                       formControlName="email"
+                       [(ngModel)]="user.email"
+                >
+                <mat-error *ngIf="SignForm.get('email').hasError('email')">Incorrecte email format</mat-error>
+                <mat-error *ngIf="SignForm.get('email').hasError('required')">Email obligatoire</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field >
+                <mat-label>Adresse</mat-label>
+                <mat-pass-toggle-visibility #toggle  matSuffix></mat-pass-toggle-visibility>
+
+                <input matInput
+                formControlName="adresse"
+                       required
+                       [(ngModel)]="user.adresse"
+                >
+                <mat-error *ngIf="SignForm.get('adresse').hasError('required')">Adresse obligatoire</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div style="display: flex;flex-direction: row;justify-content: space-around;align-items: flex-start;">
+            <div>
+              <mat-form-field >
+                <mat-label>Password</mat-label>
+                <mat-pass-toggle-visibility #toggle  matSuffix></mat-pass-toggle-visibility>
+
+                <input matInput type="password"
+                       #password
+                       formControlName="password"
+                       required
+                       placeholder="Type your password"
+                       [(ngModel)]="user.password"
+                >
+                <mat-error *ngIf="SignForm.get('password').hasError('required')">Mot de passe obligatoire</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          
+
+
+         
+          <div style="display: flex;justify-content: center; margin-top: 30px;">
+            <div >
+              <button  mat-raised-button  type="submit" (click)="add()"  [disabled]="SignForm.invalid">Inscrire</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

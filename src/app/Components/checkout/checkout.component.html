@@ -1,0 +1,63 @@
+<app-nav></app-nav>
+<br><br><br><br><br><br><br><br><br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Date commande</th>
+      <th scope="col">Nom Produits</th>
+      <th scope="col">Images</th>
+      <th scope="col">Description</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Quantité</th>
+      <th scope="col">Confirmation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let commande of mycommandes.reverse()">
+      
+      <th scope="row" *ngIf="commande.produits.length!=0" >{{commande.commande.date | date}}</th>
+      <td >
+        <ul *ngFor="let prod of commande.produits"  >
+          <li> {{prod.nom}}</li>
+        
+        </ul>
+       
+        
+      </td>
+      <td >
+        <ul *ngFor="let prod of commande.produits">
+          <li> <img  class="card-img-top" [src]="'http://localhost:4000/files/' + prod.image"></li>
+        </ul>
+       
+        
+        </td>
+      <td>
+        <ul *ngFor="let prod of commande.produits ">
+          <li> {{prod.desc}}</li>
+        </ul>
+      </td>
+      <td>
+        <ul *ngFor="let prod of commande.produits">
+          <li> {{prod.prix}} DT</li>
+        </ul>
+      </td>
+      <td>
+        <ul *ngFor="let prod of commande.produits; let i=index">
+             <li>{{commande.commande.produits[commande.commande.produits.length-i-1].qte }}</li>
+        </ul>
+     </td>
+      <td>
+        <p *ngIf="commande.commande.vendu==true" style="color: green;font-weight: bold;">
+           confirmé
+        </p>
+        <p *ngIf="commande.commande.vendu==false" style="color: red;font-weight: bold;">
+          Non confirmé 
+        </p>
+      </td>
+    </tr>
+   
+  </tbody>
+</table>
+
+
+<app-footer></app-footer>

@@ -1,0 +1,23 @@
+
+<app-nav [actif]='thisPage'></app-nav>
+
+
+<div>
+  <div class="card" >
+    <div class="container">
+      <div class="card-cont" >
+        <div (click)="ButtonchangeLogin()" class="btn-login" id="myDivL" ><p style="margin-top: 15px;">Login</p></div>
+        <div (click)="ButtonchangeSignup()" class="btn-signup" id="myDivS"><p style="margin-top: 15px;">Inscrire</p></div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 90%;margin-left: 5%;margin-bottom: 2%;">
+    <app-login  *ngIf="Selected == true"></app-login>
+    
+    <app-register *ngIf="Selected == false"></app-register>
+  </div>
+      
+   </div>
+  <app-footer></app-footer>
+
+

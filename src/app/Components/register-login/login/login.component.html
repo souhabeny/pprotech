@@ -1,0 +1,60 @@
+
+<div class="medium-list" style="width: 40%;margin-left: 30%;">
+  <div class="list-viewer-wrapper " >
+    <div style="font-weight: bolder;font-size:30px" class="list-header-title">Login</div>
+    <hr />
+    
+    
+    <div class="alert"  [hidden]="!error2"> 
+      {{error2}}
+    </div>
+    <form [formGroup]="loginForm"  (ngSubmit)="loginForm.valid" novalidate>
+      <div class="form-container">
+        <table  >
+          <tr >
+            <td colspan="2" >
+              <mat-form-field >
+                <mat-label>Email</mat-label>
+                <input matInput
+                       id="email"
+                       #email
+                       required
+                       placeholder="Type your email"
+                       formControlName="email"
+                       [(ngModel)]="user.email"
+                >
+                <mat-error *ngIf="loginForm.get('email').hasError('required')">Email obligatoire</mat-error>
+                <mat-error *ngIf="loginForm.get('email').hasError('email')">Incorrecte email format</mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field >
+                <mat-label>Mot de passe</mat-label>
+                <mat-pass-toggle-visibility #toggle matSuffix></mat-pass-toggle-visibility>
+                <input matInput type="password"
+                       #password
+                       required
+
+                       placeholder="Entrez votre mot de passe"
+                       formControlName="password" [(ngModel)]="user.password"
+
+                >
+                <mat-error *ngIf="loginForm.get('password').hasError('required')">Mot de passe obligatoire</mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td >
+              <button (click)="login()"
+                      mat-raised-button  type="submit" [disabled]="loginForm.invalid" >CONNECTER</button>
+
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </form>
+  </div>
+</div>

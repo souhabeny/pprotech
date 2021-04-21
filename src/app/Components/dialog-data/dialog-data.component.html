@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Fiche Client</h1>
+<div mat-dialog-content>
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Adresse</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td> {{data.client.nom}}</td>
+            <td> {{data.client.prenom}}</td>
+            <td> {{data.client.adresse}}</td>
+            <td> {{data.client.email}}</td>
+        </tr>
+        
+    </table>
+  
+  <button mat-button mat-dialog-close>Cancel</button>
+</div>

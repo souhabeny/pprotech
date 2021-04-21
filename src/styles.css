@@ -1,0 +1,22 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+footer,nav{
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: bold;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.green-snackbar {
+    background: green;
+    color: white;
+}
+.red-snackbar {
+    background: rgba(255, 0, 0, 0.788);
+    color: white;
+}
+.client-snackbar {
+    
+    height: 300px;
+}

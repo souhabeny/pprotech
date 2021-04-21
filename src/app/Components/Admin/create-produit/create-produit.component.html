@@ -1,0 +1,125 @@
+<app-nav></app-nav>
+<br><br><br><br><br><br>
+
+<div style="display: flex;">
+
+
+
+
+  <div style="width: 200px;margin-left: 30px;">
+    <h3>Créer sous-catégorie</h3>
+    <form>
+      <div class="form-group">
+        <label for="name">Nom de sous-catégorie</label>
+        <input type="text" class="form-control" id="name" required="true" [(ngModel)]="souscategorie.nom" name="namecat">
+      </div>
+      <div class="form-group">
+        <label for="souscategoryC">Catégorie</label>
+        <select style="height: 40px;" id="souscategoryC" name="souscategoryC" [(ngModel)]="souscategorie.categorie" class="form-control" >
+          <option *ngFor="let cat of categoriesList" [ngValue]="cat._id">
+            {{cat.nom}}
+          </option>
+        </select>
+      </div>
+        
+        <button type="submit" (click)="savesousCategorie()" mat-flat-button color="primary">Créer</button>
+    </form>
+  </div>
+
+
+
+
+
+  <div style="width: 200px;margin-left: 30px;">
+    <h3>Créer catégorie</h3>
+    <form>
+      <div class="form-group">
+        <label for="name">Nom de catégorie</label>
+        <input type="text" class="form-control" id="name" required="true" [(ngModel)]="categorie.nom" name="namecat">
+      </div>
+      
+        <form enctype="multipart/form-data" >
+          <div style="display: flex;">
+            <label>Image</label>
+            <input (change)="fileChangeCateg($event)" type="file" accept="image/*" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" #fileInputc>
+            <button mat-icon-button style="color: white; background: #0a3d62;" (click)="fileInputc.click()" >
+              <mat-icon>photo_camera</mat-icon>
+            </button>
+          </div>
+          <img  *ngIf="imagePathCateg !== undefined" [src]="imagePathCateg" style="width: 100%; height: 250px; border-radius: 15px" [hidden]="submitted">
+        </form>
+        <button type="submit" (click)="saveCategorie()" mat-flat-button color="primary">Créer</button>
+    </form>
+  </div>
+
+  <div  style="width: 400px;margin-left: 30px;">
+    <h3>Créer produit</h3>
+    
+      <form>
+        <div class="form-group">
+          <label for="name">Nom de produit</label>
+          <input type="text" class="form-control" id="name" required="true" [(ngModel)]="product.nom" name="name">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" required="true" [(ngModel)]="product.desc"
+                 name="description">
+        </div>
+        <div class="form-group">
+          <label for="Productcategory">Catégorie</label>
+          <select style="height: 40px;" id="Productcategory" name="category" [(ngModel)]="selectedCategory" class="form-control" (change)="onChange($event)">
+            <option *ngFor="let cat of categoriesList" [ngValue]="cat">
+              {{cat.nom}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="Productsouscategory">Sous Catégorie</label>
+          <select style="height: 40px;" id="Productsouscategory" name="category" [(ngModel)]="product.sousCategorie" class="form-control">
+            <option *ngFor="let cat of sousCategoriesList" [ngValue]="cat._id">
+              {{cat.nom}}
+            </option>
+          </select>
+        </div>
+       <!-- <div class="form-group">
+          <label for="image">Product Image</label>
+          <input type="text" class="form-control" id="image" required="true" [(ngModel)]="product.image"
+                 name="quantity">
+        </div>-->
+    
+       
+    
+        <div  class="text-center; form-group" [ngStyle]="{backgroundImage: uploadedFiles, backgroundSize: 'cover'}">
+          <form enctype="multipart/form-data" >
+            <div style="display: flex;">
+              <label>Image</label>
+              <input (change)="fileChange($event)" type="file" accept="image/*" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" #fileInput>
+              <button mat-icon-button style="color: white; background: #0a3d62; margin-top: 65px" (click)="fileInput.click()" class="mat-elevation-z2">
+              <mat-icon>photo_camera</mat-icon>
+              </button>
+            </div>
+            
+          </form>
+          <img  *ngIf="imagePath !== undefined" [src]="imagePath" style="width: 100%; height: 250px; border-radius: 15px" [hidden]="submitted">
+        </div>
+    
+    
+    
+    
+        <div class="form-group">
+          <label for="quantity">Quantité</label>
+          <input type="number" class="form-control" id="quantity" required="true" [(ngModel)]="product.stock"
+                 name="quantity">
+        </div>
+        <div class="form-group">
+          <label for="price">Prix</label>
+          <input class="form-control" id="price" required="true" [(ngModel)]="product.prix" name="price">
+        </div>
+        
+        <button type="submit" (click)="closeThis()" mat-flat-button color="primary">Créer</button>
+       
+      </form>
+    </div>
+</div>
+
+
